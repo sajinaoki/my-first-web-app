@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エルサ - ファンwiki</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #202122;
+            --sub: #54595d;
+            --link: #3366cc;
+            --border: #a2a9b1;
+            --soft: #f8f9fa;
+            --head: #eaf3fb;
+            --ice: #7fd3f7;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #1b1d20;
+                --text: #e6e6e6;
+                --sub: #b0b5ba;
+                --link: #8ab4f8;
+                --border: #4a4f55;
+                --soft: #25282c;
+                --head: #22303d;
+            }
+        }
+        :root[data-theme="dark"] {
+            --bg: #1b1d20;
+            --text: #e6e6e6;
+            --sub: #b0b5ba;
+            --link: #8ab4f8;
+            --border: #4a4f55;
+            --soft: #25282c;
+            --head: #22303d;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+            line-height: 1.8;
+        }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo {
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--text);
+        }
+        .logo span { color: var(--ice); }
+        .tagline { font-size: 12px; color: var(--sub); }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        h1.title {
+            font-family: Georgia, "Times New Roman", "Hiragino Mincho ProN", serif;
+            font-weight: normal;
+            font-size: 28px;
+            margin: 8px 0 0;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 4px;
+        }
+        .sub-note {
+            font-size: 12px;
+            color: var(--sub);
+            margin: 4px 0 16px;
+        }
+        .layout {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+        .content { flex: 1; min-width: 0; }
+
+        /* infobox */
+        .infobox {
+            float: right;
+            width: 280px;
+            margin: 0 0 16px 20px;
+            border: 1px solid var(--border);
+            background: var(--soft);
+            font-size: 14px;
+            border-collapse: collapse;
+        }
+        .infobox .ib-title {
+            background: var(--head);
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 8px;
+        }
+        .infobox .ib-img {
+            background: linear-gradient(160deg, #dff4ff 0%, #9fdcf7 60%, #5fbde8 100%);
+            text-align: center;
+            padding: 16px 8px;
+        }
+        .infobox .ib-img svg { width: 150px; height: 150px; }
+        .infobox .ib-caption {
+            font-size: 12px;
+            color: var(--sub);
+            text-align: center;
+            padding: 4px 8px 8px;
+        }
+        .infobox table { width: 100%; border-collapse: collapse; }
+        .infobox th, .infobox td {
+            border-top: 1px solid var(--border);
+            padding: 6px 8px;
+            vertical-align: top;
+            text-align: left;
+        }
+        .infobox th {
+            width: 36%;
+            color: var(--sub);
+            font-weight: normal;
+            white-space: nowrap;
+        }
+
+        /* toc */
+        .toc {
+            display: inline-block;
+            border: 1px solid var(--border);
+            background: var(--soft);
+            padding: 10px 20px;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        .toc-title { text-align: center; font-weight: bold; margin-bottom: 4px; }
+        .toc ol { margin: 0; padding-left: 20px; }
+
+        h2 {
+            font-family: Georgia, "Times New Roman", "Hiragino Mincho ProN", serif;
+            font-weight: normal;
+            font-size: 22px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2px;
+            margin: 28px 0 10px;
+        }
+        h3 {
+            font-size: 17px;
+            margin: 20px 0 8px;
+            border-left: 4px solid var(--ice);
+            padding-left: 8px;
+        }
+        p { margin: 0 0 12px; }
+        ul { padding-left: 22px; margin: 0 0 12px; }
+        li { margin-bottom: 4px; }
+
+        .quote {
+            border-left: 4px solid var(--ice);
+            background: var(--soft);
+            padding: 10px 14px;
+            margin: 12px 0;
+            font-style: italic;
+        }
+
+        table.data {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin: 8px 0 16px;
+        }
+        table.data th, table.data td {
+            border: 1px solid var(--border);
+            padding: 6px 10px;
+            text-align: left;
+        }
+        table.data th { background: var(--head); }
+
+        sup.ref { font-size: 11px; color: var(--link); }
+
+        footer {
+            border-top: 1px solid var(--border);
+            margin-top: 32px;
+            padding: 16px;
+            font-size: 12px;
+            color: var(--sub);
+            text-align: center;
+        }
+
+        /* mobile */
+        @media (max-width: 640px) {
+            .layout { flex-direction: column; }
+            .infobox {
+                float: none;
+                width: 100%;
+                margin: 0 0 16px;
+            }
+            h1.title { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">ファン<span>wiki</span></div>
+        <div class="tagline">非公式のキャラクター解説ページ</div>
+    </header>
+
+    <main>
+        <h1 class="title">エルサ</h1>
+        <div class="sub-note">出典: 非公式の解説ページ ／ 『アナと雪の女王』に登場するキャラクター</div>
+
+        <div class="layout">
+            <aside>
+                <table class="infobox">
+                    <tr><td colspan="2" class="ib-title">エルサ</td></tr>
+                    <tr><td colspan="2" class="ib-img">
+                        <!-- 雪の結晶をイメージしたシンプルなイラスト -->
+                        <svg viewBox="0 0 200 200" aria-label="雪の結晶のイラスト">
+                            <g stroke="#ffffff" stroke-width="7" stroke-linecap="round" fill="none">
+                                <line x1="100" y1="20" x2="100" y2="180"/>
+                                <line x1="26" y1="60" x2="174" y2="140"/>
+                                <line x1="26" y1="140" x2="174" y2="60"/>
+                                <polyline points="100,40 85,55 100,70 115,55 100,40"/>
+                                <polyline points="100,160 85,145 100,130 115,145 100,160"/>
+                                <polyline points="45,80 45,100 60,100"/>
+                                <polyline points="155,120 155,100 140,100"/>
+                            </g>
+                            <circle cx="100" cy="100" r="16" fill="#ffffff" opacity="0.9"/>
+                        </svg>
+                    </td></tr>
+                    <tr><td colspan="2" class="ib-caption">氷の魔法を操る雪の女王</td></tr>
+                    <tr><th>作品</th><td>アナと雪の女王</td></tr>
+                    <tr><th>初登場</th><td>2013年（映画『アナと雪の女王』）</td></tr>
+                    <tr><th>種族</th><td>人間</td></tr>
+                    <tr><th>国籍</th><td>アレンデール王国</td></tr>
+                    <tr><th>職業</th><td>女王</td></tr>
+                    <tr><th>能力</th><td>氷・雪を生み出し操る魔法</td></tr>
+                    <tr><th>家族</th><td>アナ（妹）<br>アグナル国王（父）<br>イドゥナ王妃（母）</td></tr>
+                    <tr><th>声優</th><td>松たか子（日本語吹替）<br>イディナ・メンゼル（英語）</td></tr>
+                </table>
+            </aside>
+
+            <div class="content">
+                <p><b>エルサ</b>（Elsa）は、ディズニー映画『アナと雪の女王』（2013年）および続編『アナと雪の女王2』（2019年）に登場する架空のキャラクターである。アレンデール王国の第一王女で、後に女王となる。生まれながらに氷と雪を操る魔法の力を持ち、その力を制御できずに苦しみながら生きてきた。</p>
+
+                <div class="toc">
+                    <div class="toc-title">目次</div>
+                    <ol>
+                        <li><a href="#overview">概要</a></li>
+                        <li><a href="#history">生い立ち</a></li>
+                        <li><a href="#personality">性格と能力</a></li>
+                        <li><a href="#works">作品での活躍</a></li>
+                        <li><a href="#cast">声優</a></li>
+                        <li><a href="#related">関連項目</a></li>
+                    </ol>
+                </div>
+
+                <h2 id="overview">概要</h2>
+                <p>エルサはアレンデール王国の国王と王妃の長女として生まれた。妹のアナとは仲の良い姉妹であったが、エルサの魔法が原因で起きた事故をきっかけに、二人は引き離されて育つことになる。</p>
+                <p>物語の中心的な人物の一人であり、「ありのままで」（Let It Go）は作中で彼女が自らの力と向き合う場面を象徴する曲として知られている。</p>
+
+                <h2 id="history">生い立ち</h2>
+                <h3>幼少期</h3>
+                <p>幼いころのエルサは、魔法の力で雪や氷を生み出して妹のアナと遊んでいた。しかしある日、誤ってアナに魔法を当ててしまい、アナは意識を失う。国中の魔法に詳しい岩の精霊（トロールの長）パビーの助けにより、アナは一命を取り留めるが、アナからエルサの魔法に関する記憶は消されてしまった。</p>
+                <p>両親はエルサの力を隠すため、彼女に手袋を着けさせ、部屋に閉じこもらせるようになった。エルサは妹を傷つけないよう自分を抑え、やがて二人の姉妹は互いに会えない日々を過ごすことになる。</p>
+                <h3>戴冠式と王国からの逃走</h3>
+                <p>数年後、両親が船の事故で亡くなる。エルサは戴冠式によって女王となるが、式典の場で力を制御できず、王国を真冬に変えてしまう。人々を混乱させた彼女は、国を離れ北の山へ逃げ込んだ。</p>
+                <p>北の山でエルサは、誰にも邪魔されない氷の宮殿を築く。そこで彼女は自分の力を受け入れ、「ありのままで」を歌い上げる。</p>
+
+                <h2 id="personality">性格と能力</h2>
+                <p>エルサは、責任感が強く、誰にも迷惑をかけまいとする慎重な性格として描かれている。幼いころからの抑圧によって、自分の感情を表に出すことが苦手である。一方で、妹のアナを深く愛しており、その想いが物語の大きな原動力になっている。</p>
+                <h3>魔法の力</h3>
+                <p>エルサの魔法は、空気中の水分から氷や雪を生み出し、形を自在に変えることができる。力が強まると感情に左右されやすく、動揺すると制御が難しくなる。作中では、氷で橋や階段、ドレスなどを作り出す姿が印象的に描かれている。</p>
+                <ul>
+                    <li>氷の創造：手から氷の結晶や氷塊を生み出す</li>
+                    <li>雪の操作：雪を降らせたり、吹雪を起こしたりする</li>
+                    <li>氷の造形：自分の衣装や建造物を氷で作る</li>
+                </ul>
+
+                <h2 id="works">作品での活躍</h2>
+                <h3>『アナと雪の女王』（2013年）</h3>
+                <p>王国を凍りつかせてしまったエルサを連れ戻すため、アナは旅に出る。山で出会った山男のクリストフや、雪だるまのオラフとともに、姉のもとへ向かう。エルサは最初こそ妹を拒むが、最終的に姉妹の絆を取り戻し、アレンデールの夏を取り戻すことに成功する。</p>
+                <h3>『アナと雪の女王2』（2019年）</h3>
+                <p>続編では、エルサが自分の力の源と、両親や祖先の過去の秘密に向き合う姿が描かれる。妹のアナやクリストフ、オラフとともに、魔法の森や未知の土地へ旅立つ。</p>
+
+                <h2 id="cast">声優</h2>
+                <table class="data">
+                    <tr><th>言語</th><th>声優</th></tr>
+                    <tr><td>日本語</td><td>松たか子</td></tr>
+                    <tr><td>英語</td><td>イディナ・メンゼル</td></tr>
+                </table>
+                <p>「ありのままで」は、日本語版で松たか子が歌唱し、英語版ではイディナ・メンゼルが歌唱している。</p>
+
+                <h2 id="related">関連項目</h2>
+                <ul>
+                    <li>アナと雪の女王</li>
+                    <li>アナ（アナと雪の女王）</li>
+                    <li>オラフ（アナと雪の女王）</li>
+                    <li>クリストフ（アナと雪の女王）</li>
+                    <li>アレンデール王国</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        このページは非公式のファン制作サイトです。キャラクター・作品の権利はディズニーに帰属します。<br>
+        内容は簡単にまとめたもので、正確性を保証するものではありません。
+    </footer>
+</body>
+</html>
